@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x} --color",
+    "lint-staged": "lint-staged",
     "preview": "vite preview",
-    "format:fix": "prettier --write .",
-    "prepare": "husky install"
+    "format:fix": "prettier --write src/**/*.{ts,tsx,scss,css,json}",
+    "prepare": "cd ../ && husky install ./.husky"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -33,5 +34,8 @@
     "prettier": "3.0.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "lint-staged": {
+    "/*.{ts,tsx,scss}": "prettier --write --ignore-unknown"
   }
 }
