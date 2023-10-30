@@ -10,7 +10,8 @@
     "lint-staged": "lint-staged",
     "preview": "vite preview",
     "format:fix": "prettier --write src/**/*.{ts,tsx,scss,css,json}",
-    "prepare": "cd ../ && husky install ./.husky"
+    "prepare": "cd ../ && husky install ./.husky",
+    "deploy": "vite build && gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -29,6 +30,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "gh-pages": "^6.0.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.0.2",
     "prettier": "3.0.3",
