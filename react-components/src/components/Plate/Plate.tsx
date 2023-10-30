@@ -55,10 +55,6 @@ class Plate extends Component<PlateProps, PlateState> {
       });
   };
 
-  componentDidMount() {
-    this.searchItems(this.props.searchTerm);
-  }
-
   componentDidUpdate(prevProps: PlateProps) {
     if (this.props.searchTerm !== prevProps.searchTerm) {
       this.searchItems(this.props.searchTerm);
