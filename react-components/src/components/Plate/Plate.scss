@@ -1,0 +1,54 @@
+.plate-block {
+  background-color: #212121;
+  height: 80vh;
+  opacity: 0.75;
+  overflow-y: scroll;
+  border-radius: 0 0 1.5vh 3.5vh;
+  border: 0.3vh solid #555555;
+  border-top: none;
+}
+.about {
+  background-color: #555555;
+  border-radius: 3vh;
+  margin-left: 0.7vh;
+  padding: 2vh;
+  box-sizing: border-box;
+  margin-bottom: 0.7vh;
+
+  > div {
+    display: flex;
+
+    div {
+      flex: 1;
+    }
+  }
+}
+h3,
+h4 {
+  color: rgb(200, 200, 200);
+  font-family: Roboto, Noto, sans-serif;
+  margin: 0;
+}
+span,
+h3 {
+  color: white;
+}
+h4 {
+  font-size: 2vh;
+}
+h3 {
+  font-size: 4vh;
+  margin-bottom: 2vh;
+}
+
+.loading {
+  color: rgb(200, 200, 200);
+  font-family: Roboto, Noto, sans-serif;
+  margin: 0 auto;
+  height: 100%;
+  display: block;
+  margin-top: 30vh;
+  text-align: center;
+  font-size: 5vh;
+  margin-left: 3vh;
+}
