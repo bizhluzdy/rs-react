@@ -6,8 +6,8 @@ interface AppState {
   searchTerm: string;
 }
 
-class App extends Component<{}, AppState> {
-  constructor(props: {}) {
+class App extends Component<object, AppState> {
+  constructor(props: object) {
     super(props);
 
     this.state = {

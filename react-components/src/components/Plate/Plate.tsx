@@ -69,36 +69,34 @@ class Plate extends Component<PlateProps, PlateState> {
           {this.state.isLoading ? (
             <div className="loading">Loading...</div>
           ) : (
-            this.state.searchResults.results.map(
-              (result: Character, index: number) => (
-                <div className="about" key={result.name}>
-                  <h3>{result.name}</h3>
+            this.state.searchResults.results.map((result: Character) => (
+              <div className="about" key={result.name}>
+                <h3>{result.name}</h3>
+                <div>
                   <div>
-                    <div>
-                      <h4>
-                        Bithday: <span>{result.birth_year}</span>
-                      </h4>
-                    </div>
-                    <div>
-                      <h4>
-                        Gender: <span>{result.gender}</span>
-                      </h4>
-                      <h4>
-                        Hair: <span>{result.hair_color}</span>
-                      </h4>
-                    </div>
-                    <div>
-                      <h4>
-                        Eyes: <span>{result.eye_color}</span>
-                      </h4>
-                      <h4>
-                        Height: <span>{result.height}</span>
-                      </h4>
-                    </div>
+                    <h4>
+                      Bithday: <span>{result.birth_year}</span>
+                    </h4>
+                  </div>
+                  <div>
+                    <h4>
+                      Gender: <span>{result.gender}</span>
+                    </h4>
+                    <h4>
+                      Hair: <span>{result.hair_color}</span>
+                    </h4>
+                  </div>
+                  <div>
+                    <h4>
+                      Eyes: <span>{result.eye_color}</span>
+                    </h4>
+                    <h4>
+                      Height: <span>{result.height}</span>
+                    </h4>
                   </div>
                 </div>
-              )
-            )
+              </div>
+            ))
           )}
         </div>
       </div>
