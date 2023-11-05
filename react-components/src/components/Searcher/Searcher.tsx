@@ -1,59 +1,45 @@
-import { Component, ChangeEvent } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Searcher.scss';
 
 interface SearcherProps {
   onSearch: (searchTerm: string) => void;
 }
 
-interface SearcherState {
-  searchTerm: string;
-  isSearching: boolean;
-}
+const Searcher: React.FC<SearcherProps> = (props) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-class Searcher extends Component<SearcherProps, SearcherState> {
-  constructor(props: SearcherProps) {
-    super(props);
-
-    this.state = {
-      searchTerm: '',
-      isSearching: false,
-    };
-  }
-
-  handleSearchInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchTerm: event.target.value });
+  const handleSearchInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchTerm(event.target.value);
   };
 
-  handleSearch = () => {
-    const trimmedSearchTerm = this.state.searchTerm.trim();
-    this.setState({ isSearching: true });
+  const handleSearch = useCallback(() => {
+    const trimmedSearchTerm = searchTerm.trim();
     localStorage.setItem('lastSearchTerm', trimmedSearchTerm);
 
-    this.props.onSearch(trimmedSearchTerm);
-  };
+    props.onSearch(trimmedSearchTerm);
+  }, [searchTerm, props]);
 
-  componentDidMount() {
+  useEffect(() => {
     const lastSearchTerm = localStorage.getItem('lastSearchTerm');
     if (lastSearchTerm) {
-      this.setState({ searchTerm: lastSearchTerm }, () => {
-        this.handleSearch();
-      });
+      setSearchTerm(lastSearchTerm);
+      handleSearch();
     }
-  }
+  }, [handleSearch]);
 
-  render() {
-    return (
-      <div className="search-block">
-        <input
-          type="search"
-          placeholder="Search..."
-          value={this.state.searchTerm}
-          onChange={this.handleSearchInputChange}
-        />
-        <input type="submit" onClick={this.handleSearch} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="search-block">
+      <input
+        type="search"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearchInputChange}
+      />
+      <input type="submit" onClick={handleSearch} />
+    </div>
+  );
+};
 
 export default Searcher;
